@@ -11,6 +11,9 @@ lerna-debug.log*
 node_modules/
 jspm_packages/
 
+# Configuration files
+config.json
+
 # Production build
 dist/
 build/
