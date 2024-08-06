@@ -9,7 +9,7 @@ const User = require("./models/user_model");
 const Note = require("./models/note_model");
 app.use(express.json());
 app.use(cors({ origin: "*" }));
-const port = 3000;
+const port = 8080;
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("Connected to MongoDB"))
