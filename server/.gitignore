@@ -1,0 +1,3 @@
+# Dependency directories
+.env
+/node_module
