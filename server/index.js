@@ -15,9 +15,17 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.error("Error connecting to MongoDB:", error));
 
+<<<<<<< HEAD
 app.get("/", (req, res) => {
   res.send("Root Route");
 });
+=======
+
+ app.get("/", (req, res) => {
+    res.send("Root Route");
+  })
+
+>>>>>>> 0cc697c4529040f036e8f73eb80f2ccfa1b5b8b8
 
 //Create New Account
 app.post("/create-account", async (req, res) => {
