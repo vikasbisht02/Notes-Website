@@ -16,25 +16,24 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if(!name) {
+    if (!name) {
       setError("Please enter a valid name");
       return;
     }
 
-    if(!validateEmail(email)) {
+    if (!validateEmail(email)) {
       setError("Please enter a valid email address");
       return;
     }
 
-    if(!password) {
+    if (!password) {
       setError("Please enter the password");
       return;
-
     }
 
-    setError("")
+    setError("");
 
-    //Signup Api Call
+    // Signup API Call
     try {
       const response = await axiosInstance.post("/create-account", {
         fullName: name,
@@ -42,10 +41,10 @@ const Signup = () => {
         password: password,
       });
 
-      //Handle Successful register Response
+      // Handle Successful register Response
       if (response.data && response.data.error) {
-        setError(response.data.message)
-        return
+        setError(response.data.message);
+        return;
       }
 
       if (response.data && response.data.accessToken) {
@@ -63,52 +62,44 @@ const Signup = () => {
         setError("An unexpected error occurred. Please try again");
       }
     }
-
-    
-  }
+  };
 
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center mt-28">
-        <div className="w-96 border  rounded bg-white px-7 py-10">
+      <div className="flex items-center justify-center mt-16 sm:mt-28 px-4 sm:px-0">
+        <div className="w-full sm:w-96 border rounded bg-white px-7 py-10">
           <form onSubmit={handleSignup}>
-            <h4 className="text-2xl mb-7 font-medium">Signup</h4>
+            <h4 className="text-xl sm:text-2xl mb-7 font-medium">Signup</h4>
             <input
               type="text"
-              name=""
-              id=""
               placeholder="Name"
-              className="input-box"
+              className="input-box w-full"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <input
               type="text"
-              name=""
-              id=""
               placeholder="Email"
-              className="input-box"
+              className="input-box w-full mt-4"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <PasswordInput
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="w-full mt-4"
             />
 
-          {
-            error && <p className="text-red-500 text-xs pb-1">{error}</p>
-          }
+            {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
 
-            <button type="submit" className="btn-primary">
+            <button type="submit" className="btn-primary w-full mt-4 sm:mt-6">
               Signup
             </button>
 
-            <p className="text-sm text-center mt-4 ">
+            <p className="text-sm text-center mt-4 sm:mt-6">
               Already have an account?
-              <Link to="/login" className="font-medium text-primary underline">
-                {" "}
+              <Link to="/login" className="font-medium text-primary underline ml-1">
                 Login
               </Link>
             </p>

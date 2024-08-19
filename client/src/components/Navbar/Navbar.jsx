@@ -44,3 +44,4 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
 };
 
 export default Navbar;
+

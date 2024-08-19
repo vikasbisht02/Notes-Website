@@ -15,7 +15,6 @@ const AddEditNotes = ({
   const [title, setTitle] = useState(noteData?.title || "");
   const [content, setContent] = useState(noteData?.content || "");
   const [tags, setTags] = useState(noteData?.tags || []);
-
   const [error, setError] = useState(null);
 
   // Add Note
@@ -71,7 +70,7 @@ const AddEditNotes = ({
 
   const handleAddNote = () => {
     if (!title) {
-      setError("Please enter valid title");
+      setError("Please enter a valid title");
       return;
     }
 
@@ -90,46 +89,45 @@ const AddEditNotes = ({
   };
 
   return (
-    <div className="relative">
-      <button className=" w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3">
+    <div className="relative p-4 sm:p-6 bg-white rounded-lg shadow-md max-w-lg w-full mx-auto">
+      <button className="w-8 h-8 rounded-full flex items-center justify-center absolute -top-2 -right-2 sm:-top-3 sm:-right-3">
         <MdClose
-          className="text-xl text-slate-400 hover:bg-slate-300 rounded-3xl size-6"
+          className="text-lg sm:text-xl text-slate-400 hover:bg-slate-300 rounded-full"
           onClick={onClose}
         />
       </button>
 
-      <div className="flex flex-col gap-2">
-        <label className="input-title">Title</label>
+      <div className="flex flex-col gap-2 mt-2 sm:mt-4">
+        <label className="text-sm font-medium">Title</label>
         <input
           type="text"
-          className="text-xl text-slate-950 border border-gray-200 outline-none rounded-lg p-3 hover:bg-slate-200 "
+          className="text-base sm:text-xl text-slate-950 border border-gray-200 outline-none rounded-md sm:rounded-lg p-2 sm:p-3 hover:bg-slate-200 w-full"
           placeholder="Go to Gym at 5"
           value={title}
           onChange={({ target }) => setTitle(target.value)}
         />
       </div>
 
-      <div className="flex flex-col gap-2  mt-4">
-        <label className="input-label">CONTENT</label>
+      <div className="flex flex-col gap-2 mt-3 sm:mt-4">
+        <label className="text-sm font-medium">Content</label>
         <textarea
-          type="text"
-          className="text-sm text-slate-950 outline-none border border-gray-200  p-2 rounded-lg hover:bg-slate-200"
+          className="text-sm text-slate-950 outline-none border border-gray-200 p-2 sm:p-3 rounded-md sm:rounded-lg hover:bg-slate-200 w-full"
           placeholder="Content"
-          rows={10}
+          rows={4}
           value={content}
           onChange={({ target }) => setContent(target.value)}
         ></textarea>
       </div>
 
-      <div className="mt-3">
-        <label className="input-label">TAGS</label>
+      <div className="mt-3 sm:mt-4">
+        <label className="text-sm font-medium">Tags</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
 
-      {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
+      {error && <p className="text-xs sm:text-sm text-red-500 mt-2">{error}</p>}
 
       <button
-        className="btn-primary font-medium  mt-5 p-3 rounded-lg "
+        className="btn-primary font-medium w-full mt-4 sm:mt-5 p-2 sm:p-3 rounded-md sm:rounded-lg"
         onClick={handleAddNote}
       >
         {type === "edit" ? "UPDATE" : "ADD"}
